@@ -1,0 +1,51 @@
+.trackpad-stage {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 56px);
+  background: #000;
+  overflow: hidden;
+  touch-action: none;
+}
+
+.trackpad-surface {
+  position: absolute;
+  inset: 0;
+  touch-action: none;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 100% 33.33%,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px) 0 0 / 33.33% 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.trackpad-surface.is-active {
+  background-color: rgba(255, 255, 255, 0.03);
+}
+
+.trackpad-hint {
+  max-width: 320px;
+  text-align: center;
+  color: var(--text-dim, #8b93a7);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  pointer-events: none;
+  user-select: none;
+}
+
+.trackpad-stage .live-controlbar {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 5;
+}
+
+@media (orientation: landscape) {
+  .trackpad-hint {
+    max-width: 420px;
+  }
+}

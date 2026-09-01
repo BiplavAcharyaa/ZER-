@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<title>Live Screen Control</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="live.css" />
+</head>
+<body class="live-body">
+
+  <header class="live-topbar">
+    <a href="/" class="live-back" aria-label="Back">←</a>
+    <div class="conn" id="connIndicator">
+      <span class="conn__dot" id="connDot"></span>
+      <span id="connLabel">Connecting…</span>
+    </div>
+    <div class="live-topbar__actions">
+      <button class="live-iconbtn" id="keyboardToggleBtn" aria-label="Keyboard">⌨</button>
+      <button class="live-iconbtn" id="fullscreenBtn" aria-label="Fullscreen">⛶</button>
+    </div>
+  </header>
+
+  <main class="live-stage" id="liveStage">
+    <img id="remoteVideo" alt="Live screen" />
+
+    <div class="live-touch-surface" id="touchSurface"></div>
+
+    <div class="live-startgate" id="startGate">
+      <button class="btn btn--wide btn--accent" id="startBtn">Tap to start live view</button>
+    </div>
+
+    <div class="live-controlbar" id="controlBar" hidden>
+      <button class="live-ctrlbtn" id="rightClickBtn">Right Click</button>
+      <button class="live-ctrlbtn" id="dblClickBtn">Double Click</button>
+      <button class="live-ctrlbtn" id="middleClickBtn">Middle Click</button>
+    </div>
+  </main>
+
+  <div class="live-keyboard-bar" id="keyboardBar" hidden>
+    <input type="text" id="keyboardInput" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" />
+    <button class="live-ctrlbtn" id="enterKeyBtn">Enter</button>
+    <button class="live-ctrlbtn" id="backspaceKeyBtn">⌫</button>
+    <button class="live-ctrlbtn" id="closeKeyboardBtn">Done</button>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="live.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+<title>Mouse Trackpad</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="live.css" />
+<link rel="stylesheet" href="trackpad.css" />
+</head>
+<body class="live-body">
+
+  <header class="live-topbar">
+    <a href="/" class="live-back" aria-label="Back">←</a>
+    <div class="conn" id="connIndicator">
+      <span class="conn__dot" id="connDot"></span>
+      <span id="connLabel">Connecting…</span>
+    </div>
+    <div class="live-topbar__actions">
+      <button class="live-iconbtn" id="sensitivityBtn" aria-label="Sensitivity">⚡</button>
+    </div>
+  </header>
+
+  <main class="trackpad-stage" id="trackpadStage">
+    <div class="trackpad-surface" id="trackpadSurface">
+      <p class="trackpad-hint">
+        Drag with one finger to move the cursor · tap to left‑click ·
+        two‑finger tap to right‑click · two‑finger drag to scroll ·
+        double‑tap to double‑click · press &amp; hold, then drag to drag‑select
+      </p>
+    </div>
+
+    <div class="live-controlbar" id="controlBar">
+      <button class="live-ctrlbtn" id="leftClickBtn">Left Click</button>
+      <button class="live-ctrlbtn" id="rightClickBtn">Right Click</button>
+      <button class="live-ctrlbtn" id="middleClickBtn">Middle Click</button>
+      <button class="live-ctrlbtn" id="dblClickBtn">Double Click</button>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="trackpad.js"></script>
+</body>
+</html>

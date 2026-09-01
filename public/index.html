@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>PC Remote Control</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="topbar__title">
+      <span class="topbar__mark">⏻</span>
+      <div>
+        <h1>PC Remote</h1>
+        <p class="topbar__sub">Local network control panel</p>
+      </div>
+    </div>
+    <div class="conn" id="connIndicator">
+      <span class="conn__dot" id="connDot"></span>
+      <span id="connLabel">Connecting…</span>
+    </div>
+  </header>
+
+  <main class="panels">
+
+    <section class="panel">
+      <h2 class="panel__title">Live Screen Control</h2>
+      <a class="btn btn--wide btn--accent" href="/live.html">Live Screen</a>
+    </section>
+
+    <section class="panel">
+      <h2 class="panel__title">Mouse Trackpad</h2>
+      <a class="btn btn--wide btn--accent" href="/trackpad.html">Open Trackpad</a>
+    </section>
+
+    <!-- Apps & Websites -->
+    <section class="panel">
+      <h2 class="panel__title">Apps &amp; Websites</h2>
+      <div class="grid grid--3">
+        <button class="btn" data-action="post" data-url="/api/browser/brave">Brave</button>
+        <button class="btn" data-action="post" data-url="/api/browser/youtube">YouTube</button>
+        <button class="btn" data-action="post" data-url="/api/browser/whatsapp-web">WhatsApp&nbsp;Web</button>
+        <button class="btn" data-action="post" data-url="/api/apps/whatsapp">WhatsApp&nbsp;Desktop</button>
+        <button class="btn" data-action="post" data-url="/api/apps/chatgpt">ChatGPT</button>
+        <button class="btn" data-action="post" data-url="/api/apps/claude">Claude</button>
+        <button class="btn" data-action="post" data-url="/api/apps/gemini">Gemini</button>
+      </div>
+    </section>
+
+    <!-- Media -->
+    <section class="panel">
+      <h2 class="panel__title">Media</h2>
+      <div class="grid grid--4">
+        <button class="btn btn--media" data-action="post" data-url="/api/media/previous" aria-label="Previous">⏮</button>
+        <button class="btn btn--media btn--accent" data-action="post" data-url="/api/media/play-pause" aria-label="Play / Pause">⏯</button>
+        <button class="btn btn--media" data-action="post" data-url="/api/media/next" aria-label="Next">⏭</button>
+        <button class="btn btn--media" data-action="post" data-url="/api/media/stop" aria-label="Stop">⏹</button>
+      </div>
+    </section>
+
+    <!-- Volume -->
+    <section class="panel">
+      <h2 class="panel__title">Volume</h2>
+      <div class="volume">
+        <div class="volume__readout">
+          <span class="mono" id="volumeValue">--</span><span class="mono volume__pct">%</span>
+          <span class="tag" id="muteTag" hidden>MUTED</span>
+        </div>
+        <input type="range" min="0" max="100" value="50" id="volumeSlider" class="slider" />
+        <div class="grid grid--4">
+          <button class="btn" id="volDownBtn">－</button>
+          <button class="btn" id="volUpBtn">＋</button>
+          <button class="btn" id="muteBtn">Mute</button>
+          <button class="btn" id="unmuteBtn">Unmute</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- System -->
+    <section class="panel">
+      <h2 class="panel__title">System</h2>
+      <div class="readouts">
+        <div class="readout">
+          <span class="readout__label">CPU</span>
+          <span class="mono readout__value" id="cpuValue">--%</span>
+        </div>
+        <div class="readout">
+          <span class="readout__label">RAM</span>
+          <span class="mono readout__value" id="ramValue">--%</span>
+        </div>
+        <div class="readout">
+          <span class="readout__label">Uptime</span>
+          <span class="mono readout__value" id="uptimeValue">--</span>
+        </div>
+        <div class="readout">
+          <span class="readout__label">LAN IP</span>
+          <span class="mono readout__value" id="lanIpValue">--</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Screenshot -->
+    <section class="panel">
+      <h2 class="panel__title">Screenshot</h2>
+      <button class="btn btn--wide" id="screenshotBtn">Capture Screenshot</button>
+      <div class="screenshot" id="screenshotWrap" hidden>
+        <img id="screenshotImg" alt="Captured screenshot" />
+        <a class="btn btn--wide" id="screenshotDownload" download="screenshot.png">Save / Download</a>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
